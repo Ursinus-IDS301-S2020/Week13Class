@@ -44,7 +44,11 @@ class Markov(object):
         text: string
             The text
         """
-        text2 = text + text
+        if len(text) == 0:
+            return
+        text2 = "" + text
+        while len(text2) < len(text) + self.k:
+            text2 += text
         for i in range(len(text)):
             state = text2[i:i+self.k]
             next_char = text2[i+self.k]
